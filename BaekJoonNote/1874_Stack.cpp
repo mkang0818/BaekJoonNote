@@ -3,8 +3,8 @@
 #include <stack>
 #include <vector>
 
+//스택 수열 백준 1874번
 using namespace std;
-
 stack<int> s;
 vector<char> v;
 int main()
@@ -16,22 +16,23 @@ int main()
 		int num;
 		cin >> num;
 
-		while (cnt <= num) {
+		//누적된 값 cnt가 입력값보다 작을 때 push
+		while (cnt <= num) { //입력값과 누적값 비교
 			v.push_back('+');
 			s.push(cnt);
-			cnt++;
+			cnt++; //누적값
 		}
-
-		if (num == s.top()) {
+		//입력값이 가장 큰 수일때 pop
+		if (num == s.top()) { //입력값과 스택에서 가장 큰 값과 비교
 			v.push_back('-');
 			s.pop();
 		}
-		else {
+		else { //입력값이 top
 			cout << "NO";
 			return 0;
 		}
 	}
 	for (int i = 0; i < v.size(); i++) {
-		cout << v[i] << "\n";
+		cout << v[i] << "\n"; //기호 출력
 	}
 }
